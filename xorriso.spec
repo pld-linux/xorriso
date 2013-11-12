@@ -1,4 +1,9 @@
 #
+#
+# !!!
+# !!! NOTE: the same software is built from the libisoburn.spec
+# !!!
+#
 # Conditional build:
 %bcond_with	tests		# build with tests
 %bcond_without	tests		# build without tests
