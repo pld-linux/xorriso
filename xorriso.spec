@@ -6,12 +6,12 @@
 Summary:	ISO 9660 Rock Ridge Filesystem Manipulator
 Summary(pl.UTF-8):	Program do operacji na systemach plików ISO 9660 Rock Ridge
 Name:		xorriso
-Version:	1.4.0
+Version:	1.4.4
 Release:	0.1
 License:	GPL v3+
 Group:		Applications
 Source0:	http://www.gnu.org/software/xorriso/%{name}-%{version}.tar.gz
-# Source0-md5:	ec79fd2736b8da76e7a870e27cadf6fa
+# Source0-md5:	51b82bc724baab242b16cd1a3aee3b6e
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/xorriso/
 BuildRequires:	acl-devel
