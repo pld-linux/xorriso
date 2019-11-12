@@ -1,4 +1,5 @@
-# !!! NOTE: PLD supplies xorriso from libisoburn.spec (using libjte+libisofs+libburn)
+# !!! NOTE: PLD supplies stable xorriso from libisoburn.spec (using libjte+libisofs+libburn)
+# 1.5.odd are development snapshots
 #
 # Conditional build:
 %bcond_without	tests		# don't perform "make test"
@@ -6,12 +7,15 @@
 Summary:	ISO 9660 Rock Ridge Filesystem Manipulator
 Summary(pl.UTF-8):	Program do operacji na systemach plików ISO 9660 Rock Ridge
 Name:		xorriso
-Version:	1.5.1
+Version:	1.5.3
 Release:	0.1
 License:	GPL v3+
 Group:		Applications
+# stable (1.5.even)
+#Source0:	https://ftp.gnu.org/gnu/xorriso/%{name}-%{version}.tar.gz
+# development (1.5.odd)
 Source0:	http://www.gnu.org/software/xorriso/%{name}-%{version}.tar.gz
-# Source0-md5:	ef614b07a82d1cc442feb968a427b189
+# Source0-md5:	d6b16763a2ca23eec718cfac1761b40f
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/xorriso/
 BuildRequires:	acl-devel
