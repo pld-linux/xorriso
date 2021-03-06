@@ -7,15 +7,16 @@
 Summary:	ISO 9660 Rock Ridge Filesystem Manipulator
 Summary(pl.UTF-8):	Program do operacji na systemach plików ISO 9660 Rock Ridge
 Name:		xorriso
-Version:	1.5.3
+%define	basever	1.5.4
+Version:	%{basever}.pl02
 Release:	0.1
 License:	GPL v3+
 Group:		Applications
 # stable (1.5.even)
 #Source0:	https://ftp.gnu.org/gnu/xorriso/%{name}-%{version}.tar.gz
 # development (1.5.odd)
-Source0:	http://www.gnu.org/software/xorriso/%{name}-%{version}.tar.gz
-# Source0-md5:	d6b16763a2ca23eec718cfac1761b40f
+Source0:	https://www.gnu.org/software/xorriso/%{name}-%{version}.tar.gz
+# Source0-md5:	81628f176a768c7c834563d49226d3e8
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/xorriso/
 BuildRequires:	acl-devel
@@ -25,6 +26,7 @@ BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libtool
 BuildRequires:	readline-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,7 +57,8 @@ Summary(pl.UTF-8):	Oparty na Tcl/Tk interfejs do obsługi xorriso w formie okien
 Group:		X11/Applications
 Requires:	tk-BWidget
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	xorriso-tcltk
+Obsoletes:	xorriso-tcltk < 1.3.4
+BuildArch:	noarch
 
 %description gui
 Tcl/Tk based frontend that operates xorriso in dialog mode.
@@ -65,7 +68,7 @@ Oparty na Tcl/Tk interfejs do obsługi xorriso w formie okien
 dialogowych.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{basever}
 %patch0 -p1
 
 %build
@@ -74,7 +77,6 @@ dialogowych.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-
 %configure
 %{__make}
 
@@ -97,12 +99,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/osirrox
 %attr(755,root,root) %{_bindir}/xorrecord
 %attr(755,root,root) %{_bindir}/xorriso
+%attr(755,root,root) %{_bindir}/xorriso-dd-target
 %attr(755,root,root) %{_bindir}/xorrisofs
 %{_mandir}/man1/xorrecord.1*
 %{_mandir}/man1/xorriso.1*
+%{_mandir}/man1/xorriso-dd-target.1*
 %{_mandir}/man1/xorrisofs.1*
 %{_infodir}/xorrecord.info*
 %{_infodir}/xorriso.info*
+%{_infodir}/xorriso-dd-target.info*
 %{_infodir}/xorrisofs.info*
 
 %files gui
